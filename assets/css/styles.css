@@ -1,0 +1,33 @@
+/* Declaring where the Persian font is */
+
+@font-face {
+    font-family: IRANSansWeb_FaNum;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../font/eot/IRANSansWeb_FaNum.eot');
+    src: url('../font/eot/IRANSansWeb_FaNum.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../font/woff2/IRANSansWeb_FaNum.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../font/woff/IRANSansWeb_FaNum.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../font/ttf/IRANSansWeb_FaNum.ttf') format('truetype');
+}
+
+/* Using Persian font entire of the project */
+
+* {
+    font-family: 'IRANSansWeb_FaNum' !important;
+}
+
+/* Make project RTL */
+
+html, body {
+    direction: rtl !important;
+}
+
+/* Declaring some individual styles */
+
+.search-box {
+    z-index: 999;
+}
