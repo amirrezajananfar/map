@@ -1,6 +1,7 @@
 <?php
 
-defined('BASE_PATH') or die('شما دسترسی لازم برای ورود به این بخش را نداری!');
+// Preventing of direct access
+defined('BASE_PATH') or die('شما دسترسی لازم برای ورود به این بخش را ندارید!');
 
 // Declaring site url function
 function Site_url($uri = '')

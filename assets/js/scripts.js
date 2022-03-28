@@ -37,6 +37,40 @@ function user_location() {
 // Calling user location function
 user_location();
 
+// Calling submit location modal form
+my_map.on('dblclick', function (e) {
+    // Adding pin to selected point
+    L.marker(e.latlng).addTo(my_map);
+    // Opening modal
+    $('#submit-location-modal').modal('show');
+    // Getting selected point's lat & lng
+    $('#lat-display').val(e.latlng.lat);
+    $('#lng-display').val(e.latlng.lng);
+    // Resetting form inputs
+    $('#location-type').val(0);
+    $('#location-name').val('');
+});
+
+$(document).ready(function () {
+    // Sending submitted data from location form to the server via ajax
+    $('form#add-location-form').submit(function (e) {
+        e.preventDefault(); // Preventing default form submitting
+        let form = $(this);
+        let result = form.find('#result');
+        $.ajax({
+            url: form.attr('action'),
+            method: form.attr('method'),
+            data: form.serialize(),
+            success: function (response) {
+                result.html(response);
+                // Resetting form inputs
+                form.find('input#location-name').val('');
+                form.find('select#location-type').val(0);
+            }
+        });
+    });
+});
+
 // Getting view bound
 let north_line = my_map.getBounds().getNorth();
 let south_line = my_map.getBounds().getSouth();
