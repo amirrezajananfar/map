@@ -1,5 +1,8 @@
 <?php
 
+// Setting session
+session_start();
+
 // Including constants file
 require "constants.php";
 
@@ -23,3 +26,6 @@ require BASE_PATH . "libs/helpers.php";
 
 // Including locations library
 require BASE_PATH . "libs/lib-locations.php";
+
+// Including users library
+require BASE_PATH . "libs/lib-users.php";

@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="float-end">
-                                <a class="bg-primary rounded py-1 px-2 my-pointer-cursor my-primary-bg-hover text-decoration-none mx-2">
+                                <a class="bg-primary rounded py-1 px-2 my-pointer-cursor my-primary-bg-hover text-decoration-none mx-2" href="<?php echo Site_url() ?>" target="_blank">
                                     <span class="text-light me-1">
                                         <i class="bi bi-house-fill"></i>
                                         صفحه اصلی
@@ -44,7 +44,7 @@
                                 </a>
                             </div>
                             <div class="float-start">
-                                <a class="bg-danger rounded py-1 px-2 my-pointer-cursor my-danger-bg-hover text-decoration-none mx-2">
+                                <a class="bg-danger rounded py-1 px-2 my-pointer-cursor my-danger-bg-hover text-decoration-none mx-2" href="?logout=1">
                                     <span class="text-light">
                                         <i class="bi bi-door-open-fill"></i>
                                         خروج

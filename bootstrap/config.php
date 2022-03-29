@@ -7,3 +7,9 @@ $database_config = (object) [
     'password' => '',
     'database' => 'map'
 ];
+
+// Defining site admins
+$admins = [
+    // Password must be hashed
+    'amirrezajananfar@gmail.com' => '$2y$10$AsS3Y/aAjLxORZbSixetcer/LxUKNyRnRKLPJTT.Z3gYpCHLKoqNS'
+];

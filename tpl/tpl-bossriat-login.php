@@ -20,7 +20,7 @@
                         <h4 class="fw-bolder black-font-text">ورود به حساب مدیریت</h4>
                     </div>
                     <div class="px-3">
-                        <form action="" method="POST">
+                        <form action="bossriat.php" method="POST">
                             <div class="mb-4">
                                 <label for="admin-emailexampleInputEmail1" class="form-label">آدرس ایمیل:</label>
                                 <input type="email" class="form-control text-start" name="admin-email" id="admin-email" aria-describedby="email-help" placeholder="example@mail.com" autocomplete="off">

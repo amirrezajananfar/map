@@ -44,6 +44,12 @@ function Success_msg($msg)
     echo '<div style="padding: 15px;margin: 50px 100px;text-align: center;border: 1px solid transparent;border-radius: 4px;background-color: #dff0d8;border-color: #d6e9c6;color: #3c763d;">' . $msg . '</div>';
 }
 
+// Declaring fail msg
+function Fail_msg($msg)
+{
+    echo '<div style="padding: 15px;margin: 20px 460px;text-align: center;border: 1px solid transparent;border-radius: 4px;background-color: #f2dede;border-color: #ebccd1;color: #a94442;">' . $msg . '</div>';
+}
+
 // Declaring is the sent request ajax
 function Is_Ajax_request()
 {
