@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="search-box position-fixed w-100 m-2">
+                <div class="my-z-index position-fixed w-100 m-2">
                     <input type="text" id="search" class="form-control p-2 border border-1 rounded w-25" placeholder="نام مکان مد نظر خود را بنویسید...">
                 </div>
                 <div class="position-fixed top-0 start-0 bottom-0 end-0">

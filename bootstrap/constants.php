@@ -4,7 +4,8 @@
 define('PROGRAM_TITLE', 'نقشه آنلاین');
 
 // Program base url
-$program_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$program_uri_name = '/map/';
+$program_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $program_uri_name;
 define('BASE_URL', $program_url);
 
 // Program base url
