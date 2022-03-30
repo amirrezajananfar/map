@@ -1,3 +1,6 @@
+<?php
+// Using verta package for persian date & time format
+use Hekmatinasser\Verta\Verta; ?>
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -16,9 +19,11 @@
         <div class="row">
             <div class="col-sm-10 mx-auto my-5">
                 <div class="text-center py-2 mb-4">
-                    <h3 class="fw-bolder black-font-text">پنل مدیریت
-                        <span class="text-primary black-font-text">نقشه آنلاین</span>
-                    </h3>
+                    <a href="<?php echo Site_url('bossriat.php') ?>" class="text-decoration-none">
+                        <h3 class="fw-bolder black-font-text text-body">پنل مدیریت
+                            <span class="text-primary black-font-text">نقشه آنلاین</span>
+                        </h3>
+                    </a>
                 </div>
                 <div class="bg-light rounded shadow-sm my-3 px-2 py-3">
                     <div class="row">
@@ -30,16 +35,16 @@
                                         صفحه اصلی
                                     </span>
                                 </a>
-                                <a class="bg-success rounded py-1 px-2 my-pointer-cursor my-success-bg-hover text-decoration-none mx-2">
+                                <a class="bg-success rounded py-1 px-2 my-pointer-cursor my-success-bg-hover text-decoration-none mx-2" href="?verified=1">
                                     <span class="text-light">
                                         <i class="bi bi-clipboard-check-fill"></i>
                                         مکان های فعال
                                     </span>
                                 </a>
-                                <a class="bg-secondary rounded py-1 px-2 my-pointer-cursor my-secondary-bg-hover text-decoration-none mx-2">
+                                <a class="bg-secondary rounded py-1 px-2 my-pointer-cursor my-secondary-bg-hover text-decoration-none mx-2" href="?verified=0">
                                     <span class="text-light">
                                         <i class="bi bi-clipboard2-minus-fill"></i>
-                                        مکان های فعال
+                                        مکان های غیر فعال
                                     </span>
                                 </a>
                             </div>
@@ -66,25 +71,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
-                                <td>آکادمی زبان معرفت</td>
-                                <td>15 مرداد 97</td>
-                                <td>35.268</td>
-                                <td>78.365</td>
-                                <td>
-                                    <a class="bg-success rounded py-1 px-2 my-pointer-cursor my-success-bg-hover text-decoration-none mx-1">
-                                        <span class="text-light me-1">فعال</span>
-                                    </a>
-                                    <a class="bg-secondary rounded py-1 px-2 my-pointer-cursor my-secondary-bg-hover text-decoration-none mx-1">
-                                        <span class="text-light me-1">غیر فعال</span>
-                                    </a>
-                                    <a class="bg-primary rounded py-1 px-2 my-pointer-cursor my-primary-bg-hover text-decoration-none mx-1">
-                                        <span class="text-light">
+                            <?php foreach ($locations as $location) : ?>
+                                <?php $date = Verta::instance($location->created_at); ?>
+                                <tr class="text-center">
+                                    <td><?php echo $location->title ?></td>
+                                    <td><?php echo $date->format('%d %B %Y'); ?></td>
+                                    <td><?php echo $location->lat ?></td>
+                                    <td><?php echo $location->lng ?></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-<?php echo $location->verified ? 'success' : 'secondary' ?>" data-location="<?php echo $location->id ?>">
+                                            <?php echo $location->verified ? 'فعال' : 'غیر فعال' ?>
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" data-loc="<?php echo $location->id ?>">
                                             <i class="bi bi-eye-fill"></i>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

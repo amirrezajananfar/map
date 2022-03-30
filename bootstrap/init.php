@@ -21,6 +21,9 @@ try {
     Die_page('خطا در اتصال به دیتابیس: ' . $e->getMessage());
 }
 
+// Including Composer autoload
+require BASE_PATH . "vendor/autoload.php";
+
 // Including helper file
 require BASE_PATH . "libs/helpers.php";
 

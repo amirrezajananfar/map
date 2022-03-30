@@ -22,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Including template file of admin.php & login.php
 if (Is_Logged_in()) {
+    // Checkin if GET parameters set to get the locations
+    $params = $_GET ?? [];
+    $locations = Get_locations($params);
     include "tpl/tpl-bossriat.php";
 } else {
     include "tpl/tpl-bossriat-login.php";
