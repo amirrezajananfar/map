@@ -60,6 +60,18 @@ use Hekmatinasser\Verta\Verta; ?>
                     </div>
                 </div>
                 <div class="bg-light rounded shadow-sm p-3 my-3">
+                    <div class="modal fade" id="preview-location-modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-body" style="height: 500px;">
+                                    <iframe src="#" id="preview-location" class="w-100 h-100 rounded" frameborder="0"></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">بستن</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr class="text-center">
@@ -82,7 +94,7 @@ use Hekmatinasser\Verta\Verta; ?>
                                         <button class="btn btn-sm btn-<?php echo $location->verified ? 'success' : 'secondary' ?>" data-location="<?php echo $location->id ?>">
                                             <?php echo $location->verified ? 'فعال' : 'غیر فعال' ?>
                                         </button>
-                                        <button class="btn btn-sm btn-primary" data-loc="<?php echo $location->id ?>">
+                                        <button class="btn btn-sm btn-primary preview" data-location="<?php echo $location->id ?>">
                                             <i class="bi bi-eye-fill"></i>
                                         </button>
                                     </td>
@@ -94,7 +106,17 @@ use Hekmatinasser\Verta\Verta; ?>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Declaring a function to show map preview in admin panel
+        $(document).ready(function() {
+            $('.preview').click(function() {
+                $('#preview-location-modal').modal('show');
+                $('#preview-location').attr('src', '<?php echo Site_url() ?>?location=' + $(this).attr('data-location'));
+            });
+        });
+    </script>
 </body>
 
 </html>

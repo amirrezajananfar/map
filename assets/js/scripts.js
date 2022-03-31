@@ -1,16 +1,25 @@
 // Defining map type, api key & some settings
-let my_map = new L.Map('my-map', {
-    key: 'web.K3nGDbuB16tzqNkiTzVkhxtwc9fCDtnHaiVm7j2H',
-    maptype: 'dreamy-gold',
-    poi: true,
-    traffic: true,
-    maxZoom: 19,
-    attribution: "Amirreza Jananfar"
-});
+const default_location = [35.699733399159, 51.33806419367]; //Defining a default location
+const default_zoom = 15; // Defining a default map zoom
+let my_map = L.map('my-map'); // getting map as a variable
+my_map.setView(default_location, default_zoom); // Setting a default view
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    attribution: '<a href="https://github.com/rezajananfar">Amirreza Jananfar</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    maxZoom: 19
+}).addTo(my_map);
+
+// Getting view bound
+let north_line = my_map.getBounds().getNorth();
+let south_line = my_map.getBounds().getSouth();
+let west_line = my_map.getBounds().getWest();
+let east_line = my_map.getBounds().getEast();
 
 // Definig map view base on user's location
-const default_zoom = 18; // Defining a default map zoom
 let current_user_location, current_user_accuracy;
+
 // Defining a function to declare what should happen after location found event
 my_map.on('locationfound', function (e) {
     // Checking if user's location set
@@ -26,16 +35,19 @@ my_map.on('locationfound', function (e) {
     // Adding a circle around the user's location pin
     current_user_accuracy = L.circle(e.latlng, radius).addTo(my_map);
 });
+
 // Defining a function for handling problems while getting user's location
 my_map.on('locationerror', function (e) {
     console.log(e.message);
 });
+
 // Definig a function to get user's location & set map view
 function user_location() {
     my_map.locate({ setView: true, maxZoom: default_zoom });
 }
+
 // Calling user location function
-user_location();
+// user_location();
 
 // Calling submit location modal form
 my_map.on('dblclick', function (e) {
@@ -70,9 +82,3 @@ $(document).ready(function () {
         });
     });
 });
-
-// Getting view bound
-let north_line = my_map.getBounds().getNorth();
-let south_line = my_map.getBounds().getSouth();
-let west_line = my_map.getBounds().getWest();
-let east_line = my_map.getBounds().getEast();

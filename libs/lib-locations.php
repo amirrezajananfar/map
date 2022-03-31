@@ -36,3 +36,13 @@ function Get_locations($params = [])
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
+
+// Declaring a function to get & show a specific location
+function Get_location($id)
+{
+    global $pdo;
+    $sql = "SELECT * FROM locations WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_OBJ);
+}
