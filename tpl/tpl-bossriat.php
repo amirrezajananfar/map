@@ -35,6 +35,12 @@ use Hekmatinasser\Verta\Verta; ?>
                                         صفحه اصلی
                                     </span>
                                 </a>
+                                <a class="bg-warning rounded py-1 px-2 my-pointer-cursor my-warning-bg-hover text-decoration-none mx-2" href="?verified=all">
+                                    <span class="text-light">
+                                        <i class="bi bi-clipboard-fill"></i>
+                                        همه مکان ها
+                                    </span>
+                                </a>
                                 <a class="bg-success rounded py-1 px-2 my-pointer-cursor my-success-bg-hover text-decoration-none mx-2" href="?verified=1">
                                     <span class="text-light">
                                         <i class="bi bi-clipboard-check-fill"></i>
@@ -91,8 +97,8 @@ use Hekmatinasser\Verta\Verta; ?>
                                     <td><?php echo $location->lat ?></td>
                                     <td><?php echo $location->lng ?></td>
                                     <td>
-                                        <button class="btn btn-sm btn-<?php echo $location->verified ? 'success' : 'secondary' ?>" data-location="<?php echo $location->id ?>">
-                                            <?php echo $location->verified ? 'فعال' : 'غیر فعال' ?>
+                                        <button class="btn btn-sm btn-<?php echo $location->verified ? 'success' : 'secondary' ?> sw-btn" data-location="<?php echo $location->id ?>">
+                                            تایید
                                         </button>
                                         <button class="btn btn-sm btn-primary preview" data-location="<?php echo $location->id ?>">
                                             <i class="bi bi-eye-fill"></i>
@@ -109,11 +115,31 @@ use Hekmatinasser\Verta\Verta; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Declaring a function to show map preview in admin panel
+        // Declaring some js functions
         $(document).ready(function() {
+            // Declaring a function to show map preview in admin panel
             $('.preview').click(function() {
                 $('#preview-location-modal').modal('show');
                 $('#preview-location').attr('src', '<?php echo Site_url() ?>?location=' + $(this).attr('data-location'));
+            });
+            // Declaring a function to change the verify status of a location via ajax
+            $('.sw-btn').click(function() {
+                const button = $(this);
+                const location_id = button.attr('data-location');
+                $.ajax({
+                    url: "<?php echo Site_url('process/location-status.php') ?>",
+                    method: 'POST',
+                    data: {
+                        location_id: location_id
+                    },
+                    success: function(response) {
+                        // Defining what must be happen, depending to response
+                        if (response == 1) {
+                            // Switching between two classes
+                            button.toggleClass('btn-success btn-secondary')
+                        }
+                    }
+                });
             });
         });
     </script>

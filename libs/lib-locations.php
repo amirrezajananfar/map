@@ -46,3 +46,13 @@ function Get_location($id)
     $stmt->execute(['id' => $id]);
     return $stmt->fetch(PDO::FETCH_OBJ);
 }
+
+// Decalaring a function to change the verify status of a location
+function Change_Location_status($location_id)
+{
+    global $pdo;
+    $sql = "UPDATE locations SET verified = 1 - verified WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $location_id]);
+    return $stmt->rowCount();
+}
