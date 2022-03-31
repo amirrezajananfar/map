@@ -17,7 +17,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="my-z-index position-fixed my-2">
-                    <input type="text" id="search" class="form-control border border-1 rounded" placeholder="جستجو کنید...">
+                    <input type="text" id="search" class="form-control border border-1 py-2" style="width: 400px;" placeholder="دنبال چه جایی می گردی؟" autocomplete="off">
+                    <div class="bg-light rounded">
+                        <div class="locations-results my-pointer-cursor rounded"></div>
+                    </div>
                 </div>
                 <div class="my-z-index position-fixed bottom-0 start-0 m-4">
                     <button class="btn btn-primary shadow rounded-pill py-2 find-location">
@@ -96,6 +99,21 @@
             $('.find-location').click(function() {
                 // Calling user location function
                 user_location();
+            });
+            // Declaring a function for search locations
+            $('#search').keyup(function() {
+                const input = $(this);
+                const locations_results = $('.locations-results')
+                $.ajax({
+                    url: "<?php echo Site_url('process/search-location.php') ?>",
+                    method: 'POST',
+                    data: {
+                        keyword: input.val()
+                    },
+                    success: function(response) {
+                        locations_results.slideDown().html(response)
+                    }
+                });
             });
         });
     </script>

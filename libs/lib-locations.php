@@ -25,13 +25,16 @@ function Add_location($submitted_lat, $submitted_lng, $submitted_title, $submitt
 function Get_locations($params = [])
 {
     global $pdo;
-    $verify_condition = '';
-    // Checking which status admin wants to check
+    $search_condition = '';
+    // Checking which status admin or user wants to check
     if (isset($params['verified']) && in_array($params['verified'], ['0', '1'])) {
         // If the condition was true this code will be added at end of the SQL query
-        $verify_condition = " WHERE verified = {$params['verified']}";
+        $search_condition = " WHERE verified = {$params['verified']}";
+    } else if (isset($params['keyword'])) {
+        // If the condition was true this code will be added at end of the SQL query
+        $search_condition = " WHERE verified = 1 AND title like '%{$params['keyword']}%'";
     }
-    $sql = "SELECT * FROM locations $verify_condition";
+    $sql = "SELECT * FROM locations $search_condition";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);

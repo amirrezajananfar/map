@@ -77,3 +77,7 @@ html, body {
 .my-warning-bg-hover:hover {
     background-color: #f3b807 !important;
 }
+
+.search-result-bg-hover:hover {
+    background-color: #fff !important;
+}
