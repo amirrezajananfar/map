@@ -43,11 +43,8 @@ my_map.on('locationerror', function (e) {
 
 // Definig a function to get user's location & set map view
 function user_location() {
-    my_map.locate({ setView: true, maxZoom: default_zoom });
+    my_map.locate({ setView: true, maxZoom: 18 });
 }
-
-// Calling user location function
-// user_location();
 
 // Calling submit location modal form
 my_map.on('dblclick', function (e) {

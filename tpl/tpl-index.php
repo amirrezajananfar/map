@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo Site_url('assets/css/styles.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet'>
     <title><?php echo Program_title() ?></title>
 </head>
@@ -17,6 +18,11 @@
             <div class="col-sm-12">
                 <div class="my-z-index position-fixed my-2">
                     <input type="text" id="search" class="form-control border border-1 rounded" placeholder="جستجو کنید...">
+                </div>
+                <div class="my-z-index position-fixed bottom-0 start-0 m-4">
+                    <button class="btn btn-primary shadow rounded-pill py-2 find-location">
+                        من کجا هستم؟
+                    </button>
                 </div>
                 <div class="position-fixed top-0 start-0 bottom-0 end-0">
                     <div id="my-map" class="position-relative h-100"></div>
@@ -81,9 +87,17 @@
     <script src="<?php echo Site_url('assets/js/scripts.js') ?>" type="text/javascript"></script>
     <script>
         <?php if ($location) : ?>
+            // Setting a marker & change set view of map on selected location
             L.marker([<?php echo $location->lat ?>, <?php echo $location->lng ?>]).addTo(my_map).bindPopup('<?php echo $location->title ?>');
             my_map.setView([<?php echo $location->lat ?>, <?php echo $location->lng ?>], 18);
         <?php endif; ?>
+        $(document).ready(function() {
+            // Declaring a function for find user's location button
+            $('.find-location').click(function() {
+                // Calling user location function
+                user_location();
+            });
+        });
     </script>
 </body>
 
