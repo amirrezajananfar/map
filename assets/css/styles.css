@@ -1,0 +1,83 @@
+/* Declaring where the Persian font is */
+
+@font-face {
+    font-family: IRANSansWeb_FaNum;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../font/eot/IRANSansWeb_FaNum.eot');
+    src: url('../font/eot/IRANSansWeb_FaNum.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../font/woff2/IRANSansWeb_FaNum.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../font/woff/IRANSansWeb_FaNum.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../font/ttf/IRANSansWeb_FaNum.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSansWeb_FaNum_Black;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../font/eot/IRANSansWeb_FaNum_Black.eot');
+    src: url('../font/eot/IRANSansWeb_FaNum_Black.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../font/woff2/IRANSansWeb_FaNum_Black.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../font/woff/IRANSansWeb_FaNum_Black.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../font/ttf/IRANSansWeb_FaNum_Black.ttf') format('truetype');
+}
+
+/* Using Persian font entire of the project */
+
+* {
+    font-family: 'IRANSansWeb_FaNum' !important;
+}
+
+/* Make project RTL */
+
+html, body {
+    direction: rtl !important;
+}
+
+/* Declaring some individual styles */
+
+.my-z-index {
+    z-index: 999;
+}
+
+.my-bg-secondary {
+    background-color: #dfdfdf;
+}
+
+.black-font-text {
+    font-family: 'IRANSansWeb_FaNum_Black' !important;
+}
+
+.my-pointer-cursor {
+    cursor: pointer !important;
+}
+
+.my-primary-bg-hover:hover {
+    background-color: #1b69dd !important;
+}
+
+.my-success-bg-hover:hover {
+    background-color: #167c4c !important;
+}
+
+.my-secondary-bg-hover:hover {
+    background-color: #646474 !important;
+}
+
+.my-danger-bg-hover:hover {
+    background-color: #c52e3d !important;
+}
+
+.my-warning-bg-hover:hover {
+    background-color: #f3b807 !important;
+}
+
+.search-result-bg-hover:hover {
+    background-color: #fff !important;
+}

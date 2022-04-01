@@ -1,0 +1,16 @@
+{
+    "name": "rezajananfar/map",
+    "description": "A simple online map (Using PHP, MySQL, Ajax and Bootstrap)",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amirreza Jananfar",
+            "email": "amirrezajananfar@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^2.1"
+    }
+}
