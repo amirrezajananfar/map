@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fa">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +10,6 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet'>
     <title><?php echo Program_title() ?></title>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -108,9 +106,11 @@
                     url: "<?php echo Site_url('process/search-location.php') ?>",
                     method: 'POST',
                     data: {
+                        // Sending what user type to server
                         keyword: input.val()
                     },
                     success: function(response) {
+                        // Showing sent locationg from server
                         locations_results.slideDown().html(response)
                     }
                 });
@@ -118,5 +118,4 @@
         });
     </script>
 </body>
-
 </html>

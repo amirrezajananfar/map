@@ -3,7 +3,6 @@
 use Hekmatinasser\Verta\Verta; ?>
 <!DOCTYPE html>
 <html lang="fa">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +12,6 @@ use Hekmatinasser\Verta\Verta; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <title><?php echo Program_title('پنل مدیریت') ?></title>
 </head>
-
 <body class="my-bg-secondary">
     <div class="container-fluid">
         <div class="row">
@@ -144,5 +142,4 @@ use Hekmatinasser\Verta\Verta; ?>
         });
     </script>
 </body>
-
 </html>
